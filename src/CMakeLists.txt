@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 
-add_link_options(-static -static-libgcc -static-libstdc++ -Wno-pointer-arith -s -Os)
+add_link_options(-static -static-libgcc -static-libstdc++ -Wno-pointer-arith -s)
 
 add_library(RK_FUNCTION SHARED RK_FUNCTION/src/core.cpp "RK_FUNCTION/dll.def")
 add_library(RKC_DBFCONTROL SHARED RKC_DBFCONTROL/src/core.cpp "RKC_DBFCONTROL/dll.def")
