@@ -6,7 +6,7 @@ OpenShadowFlare is a project aimed at reviving the classic game ShadowFlare by r
 
 ## Community
 
-![Discord Banner 2](https://discordapp.com/api/guilds/1141730170055700550/widget.png?style=banner2)
+<iframe src="https://discord.com/widget?id=1141730170055700550&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 ## Table of Contents
 
