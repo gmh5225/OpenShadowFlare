@@ -45,7 +45,7 @@ Contributions are welcome and greatly appreciated! If you're interested in contr
 
 ## License
 
-This project is licensed under the [GPL3](LICENSE), which means you are free to use, modify, and distribute the project as long as you provide appropriate attribution and include the original license text.
+This project is licensed under the [MIT](LICENSE), which means you are free to use, modify, and distribute the project as long as you provide appropriate attribution and include the original license text.
 
 ---
 
