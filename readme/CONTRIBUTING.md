@@ -29,7 +29,7 @@ First and foremost, thank you for considering contributing to OpenShadowFlare! Y
 
 ### Code of Conduct
 
-We strive to foster an open and welcoming environment. Therefore, all contributors are expected to show respect and courtesy to other community members. Please review our [Code of Conduct](CODE_OF_CONDUCT.md) for a detailed explanation of the behavior expected from our community members.
+We strive to foster an open and welcoming environment. Therefore, all contributors are expected to show respect and courtesy to other community members. Please review our [Code of Conduct](readme/CODE_OF_CONDUCT.md) for a detailed explanation of the behavior expected from our community members.
 
 ### Final Words
 
