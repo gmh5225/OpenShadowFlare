@@ -34,7 +34,7 @@ With technological progression, the classic game faces compatibility issues on c
 
 ## Prebuilt Binaries
 
-TODO: We offer pre-constructed binaries tailored for both Windows Linux and Mac.
+TODO: We offer pre-constructed binaries tailored for Windows, Linux and Mac.
 
 ## Building from Source
 
