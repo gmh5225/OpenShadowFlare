@@ -4,9 +4,7 @@
 
 OpenShadowFlare is a project aimed at reviving the classic game ShadowFlare by rewriting its core engine to make it compatible with modern systems and resolutions. The goal is to provide a way for both nostalgic gamers and new players to enjoy this beloved title without the limitations of outdated hardware and software.
 
-## Community
-
-<iframe src="https://discord.com/widget?id=1141730170055700550&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+![Discord Shield](https://discordapp.com/api/guilds/1141730170055700550/widget.png?style=shield)
 
 ## Table of Contents
 
