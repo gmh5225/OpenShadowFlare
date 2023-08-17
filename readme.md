@@ -1,6 +1,6 @@
 # OpenShadowFlare
 
-<!-- ![Project Logo](project_logo.png) -->
+![Project Logo](readme/sf-logo-lg.png)
 
 OpenShadowFlare is a project aimed at reviving the classic game ShadowFlare by rewriting its core engine to make it compatible with modern systems and resolutions. The goal is to provide a way for both nostalgic gamers and new players to enjoy this beloved title without the limitations of outdated hardware and software.
 
