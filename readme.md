@@ -10,38 +10,51 @@ OpenShadowFlare is a project aimed at reviving the classic game ShadowFlare by r
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Getting Started](#getting-started)
+- [Prebuilt Binaries](#prebuilt-binaries)
+- [Building from source](#building-from-source)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
 
-ShadowFlare is a [brief description of the original game]. However, as technology has advanced, the original game struggles to run smoothly on modern computers, and its graphics appear outdated on high-resolution displays. OpenShadowFlare addresses these issues by modernizing the game engine while preserving the core gameplay experience.
+ShadowFlare, a unique episodic action RPG developed by Denyusha and presented by Emurasoft for Windows, comprises four distinct episodes. Its debut in Japan was in October 2001, and by October 2002, it had reached audiences worldwide. The story unfolded through releases between December 2002 and February 2003. Starting January 21, 2003, the game adopted a shareware approach, making the inaugural episode free for download. However, with the official website going offline in October 2013, it has become impossible to procure a legal copy of the game. Even though the site was revived in 2020, acquiring the game legally remains out of reach.
+
+With technological progression, the classic game faces compatibility issues on contemporary systems. It's restricted to a 640 by 480 resolution and is exclusively designed for Windows. OpenShadowFlare seeks to rectify these limitations by revamping the game engine. Our goal is to support modern widescreen resolutions and expand its accessibility across various platforms, all while maintaining the essence of the original gameplay experience.
+
 
 ## Features
 
-- **Modern Compatibility:** OpenShadowFlare brings the classic ShadowFlare game to modern systems, ensuring it runs smoothly and without compatibility issues.
+- **Contemporary System Support:** OpenShadowFlare adapts the beloved ShadowFlare to function seamlessly on modern-day systems, eliminating compatibility hitches.
 
-- **Enhanced Graphics:** The project enhances the game's graphics to look stunning on modern high-resolution displays while retaining the unique art style of the original.
+- **Resolution Upgrade:** While maintaining the original game's distinctive art style, OpenShadowFlare restructures the engine to accommodate modern widescreen resolutions.
 
-- **Improved Performance:** By optimizing the engine, OpenShadowFlare aims to provide a smoother and more responsive gaming experience.
+- **Optimized Performance:** The project seeks to refine the game's engine, ensuring a fluid and consistent gaming experience across platforms.
 
-- **Bug Fixes:** Addressing bugs and issues present in the original game, OpenShadowFlare strives to create a more polished and enjoyable gameplay experience.
+- **Bug Rectifications:** OpenShadowFlare is dedicated to ironing out glitches and issues that existed in the classic version, paving the way for a refined and enjoyable gameplay journey.
 
-## Getting Started
+## Prebuilt Binaries
 
-To get started with OpenShadowFlare, follow these steps:
+TODO: We offer pre-constructed binaries tailored for both Windows Linux and Mac.
 
-1. [Installation Instructions]
-2. [Configuration Guide]
-3. [Controls and Gameplay Guide]
-4. [Troubleshooting]
+## Building from Source
 
-For more detailed instructions, please refer to the [Installation and Usage Guide](docs/usage_guide.md).
+### Building for Windows
+Opt for `msys2` and `build.sh`.
+
+### Building for Linux/Mac
+Simply utilize `build.sh`.
+
+### Building on all Platforms
+`cmake` is universally compatible.
+
+### Incorporating Build Artifacts
+
+Post-compilation, shift the generated artifacts, such as the DLL files, to the ShadowFlare game folder. But ensure to prefix the original game's DLLs with "o_", safeguarding them from being overwritten.
+
 
 ## Contributing
 
-Contributions are welcome and greatly appreciated! If you're interested in contributing to OpenShadowFlare, please review our [Contribution Guidelines](CONTRIBUTING.md) for details on how to get involved.
+Contributions are welcome and greatly appreciated! If you're interested in contributing to OpenShadowFlare, please review our [Contribution Guidelines](readme/CONTRIBUTING.md) for details on how to get involved.
 
 ## License
 
