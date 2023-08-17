@@ -21,6 +21,8 @@ ShadowFlare, a unique episodic action RPG developed by Denyusha and presented by
 
 With technological progression, the classic game faces compatibility issues on contemporary systems. It's restricted to a 640 by 480 resolution and is exclusively designed for Windows. OpenShadowFlare seeks to rectify these limitations by revamping the game engine. Our goal is to support modern widescreen resolutions and expand its accessibility across various platforms, all while maintaining the essence of the original gameplay experience.
 
+## ShadowFlare Game
+OpenShadowFlare operates with the authentic game assets from ShadowFlare. Consequently, possessing a copy of ShadowFlare is essential for functionality. Please note that we are unable to provide this copy due to legal constraints.
 
 ## Features
 
