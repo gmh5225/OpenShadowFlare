@@ -137,17 +137,17 @@ extern "C" {
         }
 
         // Get the address of the original function from the original dll
-        showPtr o_show_func = (showPtr)GetProcAddress(o_window_Dll, "?Show@RKC_WINDOW@@QAEXH@z");
+        resizePtr o_resize_func = (resizePtr)GetProcAddress(o_window_Dll, "?Resize@RKC_WINDOW@@QAEXX");
 
         // Check if we successfully retrieved the address of the original function
-        if (!o_show_func) {
+        if (!o_resize_func) {
             // Print an error message if failed to retrieve, showing the error code
-            printf("Failed to find VScroll function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
+            printf("Failed to find Resize function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
             return;
         }
 
         // Call the original function using our function pointer
-        o_show_func(wnd);
+        o_resize_func(wnd);
 
         // Free the loaded original dll from memory. Important to release resources!
         FreeLibrary(o_window_Dll);
@@ -168,7 +168,22 @@ extern "C" {
         }
 
         // Get the address of the original function from the original dll
-        resizePtr o_resize_func = (resizePtr)GetProcAddress(o_window_Dll, "??Resize@RKC_WINDOW@@QAEX");
+        showPtr o_show_func = (showPtr)GetProcAddress(o_window_Dll, "?Show@RKC_WINDOW@@QAEXH@");
+
+        // Check if we successfully retrieved the address of the original function
+        if (!o_show_func) {
+            // Print an error message if failed to retrieve, showing the error code
+            printf("Failed to find Show function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
+            return;
+        }
+
+        // Call the original function using our function pointer
+        o_show_func(wnd);
+
+        // Free the loaded original dll from memory. Important to release resources!
+        FreeLibrary(o_window_Dll);
+
+        return;
     }
 }
 
