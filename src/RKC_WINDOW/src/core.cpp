@@ -30,39 +30,39 @@ typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* wnd);
 typedef VOID(WINAPI* showPtr)(RKC_WINDOW* wnd);
 
 extern "C" {
-    void __thiscall RKC_Window_constructor(RKC_WINDOW* wnd)
+    void __thiscall RKC_Window_constructor(RKC_WINDOW* self)
     {
-        wnd->member1 = 0;
-        wnd->member2 = 0;
-        wnd->m_hWnd = 0x0;
-        *(wnd->memberArray) = 0x0;
+        self->member1 = 0;
+        self->member2 = 0;
+        self->m_hWnd = 0x0;
+        *(self->memberArray) = 0x0;
 
         for (int i = 0; i < 10; i++) {
-            wnd->memberArray[i] = 0;
+            self->memberArray[i] = 0;
         }
 
-        wnd->member4 = 0;
-        wnd->member5 = 0;
-        wnd->member6 = 0;
-        wnd->member7 = 0;
-        wnd->member8 = 0;
-        wnd->member9 = 0;
-        wnd->member10 = 0;
-        wnd->member11 = 0;
+        self->member4 = 0;
+        self->member5 = 0;
+        self->member6 = 0;
+        self->member7 = 0;
+        self->member8 = 0;
+        self->member9 = 0;
+        self->member10 = 0;
+        self->member11 = 0;
     }
 
-    void __thiscall RKC_Window_deconstructor(RKC_WINDOW* wnd)
+    void __thiscall RKC_Window_deconstructor(RKC_WINDOW* self)
     {
         return;
     }
 
-    RKC_WINDOW& __thiscall EqualsOperator(RKC_WINDOW* wnd, const RKC_WINDOW& lhs)
+    RKC_WINDOW& __thiscall EqualsOperator(RKC_WINDOW* self, const RKC_WINDOW& lhs)
     {
-        wnd->m_hWnd = lhs.m_hWnd;
-        return *wnd;
+        self->m_hWnd = lhs.m_hWnd;
+        return *self;
     }
 
-    void __thiscall HScroll(RKC_WINDOW* wnd, uint32_t param1, uint64_t param2)
+    void __thiscall HScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
     {
         // Load the original (renamed) DLL into memory
         HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
@@ -85,7 +85,7 @@ extern "C" {
         }
 
         // Call the original function using our function pointer
-        o_hScroll_func(wnd, param1, param2);
+        o_hScroll_func(self, param1, param2);
 
         // Free the loaded original dll from memory. Important to release resources!
         FreeLibrary(o_window_Dll);
@@ -93,7 +93,7 @@ extern "C" {
         return;
     }
 
-    void __thiscall VScroll(RKC_WINDOW* wnd, uint32_t param1, uint64_t param2)
+    void __thiscall VScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
     {
         // Load the original (renamed) DLL into memory
         HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
@@ -116,7 +116,7 @@ extern "C" {
         }
 
         // Call the original function using our function pointer
-        o_vScroll_func(wnd, param1, param2);
+        o_vScroll_func(self, param1, param2);
 
         // Free the loaded original dll from memory. Important to release resources!
         FreeLibrary(o_window_Dll);
@@ -124,7 +124,7 @@ extern "C" {
         return;
     }
 
-    void __thiscall Resize(RKC_WINDOW* wnd)
+    void __thiscall Resize(RKC_WINDOW* self)
     {
         // Load the original (renamed) DLL into memory
         HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
@@ -147,7 +147,7 @@ extern "C" {
         }
 
         // Call the original function using our function pointer
-        o_resize_func(wnd);
+        o_resize_func(self);
 
         // Free the loaded original dll from memory. Important to release resources!
         FreeLibrary(o_window_Dll);
@@ -155,7 +155,7 @@ extern "C" {
         return;
     }
 
-    void __thiscall Show(RKC_WINDOW* wnd, int param_1)
+    void __thiscall Show(RKC_WINDOW* self, int param_1)
     {
         // Load the original (renamed) DLL into memory
         HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
@@ -178,7 +178,7 @@ extern "C" {
         }
 
         // Call the original function using our function pointer
-        o_show_func(wnd);
+        o_show_func(self);
 
         // Free the loaded original dll from memory. Important to release resources!
         FreeLibrary(o_window_Dll);
