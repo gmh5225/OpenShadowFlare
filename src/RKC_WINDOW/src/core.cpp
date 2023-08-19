@@ -23,7 +23,7 @@ public:
 };
 
 // Pointers to the original functions
-// These can be delete once the DLL is entirely rewritten
+// These can be deleted once the DLL is entirely rewritten
 typedef VOID(WINAPI* hScrollPtr)(RKC_WINDOW* wnd, uint32_t param1, uint32_t param2);
 typedef VOID(WINAPI* vScrollPtr)(RKC_WINDOW* wnd, uint32_t param1, uint32_t param2);
 typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* wnd);
