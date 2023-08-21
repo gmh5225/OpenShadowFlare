@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <cstdint>
-#include "utils.h"
+#include "../../utils.h"
 
 class RKC_FONTMAKER {
     // Based on the offsets and the sizeof(undefined4) which is 4 bytes.
@@ -20,9 +20,10 @@ public:
 
 // Pointers to the original functions
 // These can be deleted once the DLL is entirely rewritten
-typedef VOID(WINAPI* deconstructorPtr)(RKC_FONTMAKER* self);
-typedef VOID(WINAPI* createDIBPtr)(RKC_FONTMAKER* self, HDC* hdc);
-typedef VOID(WINAPI* drawDoubleFontPtr)(RKC_FONTMAKER* self, HDC* hdc, unsigned char* param);
+// typedef VOID(WINAPI* deconstructorPtr)(RKC_FONTMAKER* self);
+// typedef BOOL(WINAPI* createDIBPtr)(RKC_FONTMAKER* self, HDC* hdc);
+// typedef BOOL(WINAPI* drawDoubleFontPtr)(RKC_FONTMAKER* self, HDC* hdc, unsigned char* param);
+// typedef BOOL(WINAPI* drawNormalFontPtr)(RKC_FONTMAKER* self, HDC* hdc, unsigned char* param);
 
 extern "C" {
     void __thiscall RKC_FONTMAKER_constructor(RKC_FONTMAKER* self)
@@ -38,31 +39,35 @@ extern "C" {
 
     void __thiscall RKC_FONTMAKER_deconstructor(RKC_FONTMAKER* self)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
-            "o_RKC_FONTMAKER.dll",
-            deconstructorPtr,
+        CallFunctionInDLL<VOID>("o_RKC_FONTMAKER.dll",
             "??1RKC_FONTMAKER@@QAE@XZ",
-            self
-        );
+            self);
     }
 
-    void __thiscall CreateDIB(RKC_FONTMAKER* self, HDC* hdc)
+    bool __thiscall CreateDIB(RKC_FONTMAKER* self, HDC* hdc)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        bool result = CallFunctionInDLL<bool>(
             "o_RKC_FONTMAKER.dll",
-            createDIBPtr,
             "?CreateDIB@RKC_FONTMAKER@@QAEHPAUHDC__@@@Z",
-            self, hdc
-        );
+            self, hdc);
+        return result;
     }
 
-    void __thiscall DrawDoubleFont(RKC_FONTMAKER* self, HDC* hdc, unsigned char* ucharParam)
+    bool __thiscall DrawDoubleFont(RKC_FONTMAKER* self, HDC* hdc, unsigned char* ucharParam)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        bool result = CallFunctionInDLL<bool>(
             "o_RKC_FONTMAKER.dll",
-            drawDoubleFontPtr,
             "?DrawDoubleFont@RKC_FONTMAKER@@QAEHPAUHDC__@@PAE@Z",
-            self, hdc, ucharParam
-        );
+            self, hdc, ucharParam);
+        return result;
+    }
+
+    bool __thiscall DrawNormalFont(RKC_FONTMAKER* self, HDC* hdc, unsigned char* ucharParam)
+    {
+        bool result = CallFunctionInDLL<bool>(
+            "o_RKC_FONTMAKER.dll",
+            "?DrawNormalFont@RKC_FONTMAKER@@QAEHPAUHDC__@@E@Z",
+            self, hdc, ucharParam);
+        return result;
     }
 }

@@ -13,7 +13,7 @@ extern "C"
 {
     void __thiscall RKC_MEMORY_Release(RKC_MEMORY* _this)
     {
-        if(_this->allocated)
+        if (_this->allocated)
         {
             GlobalFree(_this->allocated);
             _this->allocated = 0;
@@ -45,7 +45,7 @@ extern "C"
         RKC_MEMORY_Release(_this);
         _this->allocated = (char*)GlobalAlloc(zeroInit ? GMEM_ZEROINIT : GMEM_FIXED, bytesToAllocate);
 
-        if(_this->allocated)
+        if (_this->allocated)
             _this->size = bytesToAllocate;
 
         return _this->allocated;
@@ -63,31 +63,33 @@ extern "C"
     // unused
     int __thiscall Copy(RKC_MEMORY* _this, char* data, long sizeToCopy, long start)
     {
-        if(sizeToCopy <= 0)
+        if (sizeToCopy <= 0)
             return 0;
-        if(_this->size - start < sizeToCopy)
+        if (_this->size - start < sizeToCopy)
             return 0;
 
-        memcpy((void *)(start + _this->allocated), data, sizeToCopy);
+        memcpy((void*)(start + _this->allocated), data, sizeToCopy);
         return 1;
     }
 
     // unused
     int __thiscall Clear(RKC_MEMORY* _this, char* data, long sz, long start)
     {
-        auto size = sz;
-        if(size == 0)
-            return 0;
+        // auto size = sz;
+        // if(size == 0)
+        //     return 0;
 
-        if(size < 0)
-            size = _this->size;
+        // if(size < 0)
+        //     size = _this->size;
 
-        if(_this->size - start < size)
-            return 0;
+        // if(_this->size - start < size)
+        //     return 0;
 
-        char* src = (char*)(start + _this->allocated);
+        // char* src = (char*)(start + _this->allocated);
+
 
         // implement memset operations
+        return 0;
     }
 }
 

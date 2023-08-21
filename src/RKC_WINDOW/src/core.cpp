@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <cstdint>
-#include "utils.h"
+#include "../../utils.h"
 
 class RKC_WINDOW {
 public:
@@ -25,10 +25,10 @@ public:
 
 // Pointers to the original functions
 // These can be deleted once the DLL is entirely rewritten
-typedef VOID(WINAPI* hScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
-typedef VOID(WINAPI* vScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
-typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* self);
-typedef VOID(WINAPI* showPtr)(RKC_WINDOW* self, int32_t param_1);
+// typedef VOID(WINAPI* hScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
+// typedef VOID(WINAPI* vScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
+// typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* self);
+// typedef VOID(WINAPI* showPtr)(RKC_WINDOW* self, int32_t param_1);
 
 extern "C" {
     void __thiscall RKC_Window_constructor(RKC_WINDOW* self)
@@ -63,44 +63,36 @@ extern "C" {
         return *self;
     }
 
-    void __thiscall HScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
+    void __thiscall HScroll(RKC_WINDOW* self, uint32_t param_1, uint64_t param_2)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
-            hScrollPtr,
             "?HScroll@RKC_WINDOW@@QAEXIJ",
-            self, param1, param2
-        );
+            self, param_1, param_2);
     }
 
-    void __thiscall VScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
+    void __thiscall VScroll(RKC_WINDOW* self, uint32_t param_1, uint64_t param_2)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
-            vScrollPtr,
             "?VScroll@RKC_WINDOW@@QAEXIJ@Z",
-            self, param1, param2
-        );
+            self, param_1, param_2);
     }
 
     void __thiscall Resize(RKC_WINDOW* self)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
-            resizePtr,
             "?Resize@RKC_WINDOW@@QAEXX",
-            self
-        );
+            self);
     }
 
     void __thiscall Show(RKC_WINDOW* self, int param_1)
     {
-        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+        CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
-            showPtr,
             "?Show@RKC_WINDOW@@QAEXH@",
-            self, param_1
-        );
+            self, param_1);
     }
 }
 
