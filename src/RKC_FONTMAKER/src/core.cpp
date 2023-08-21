@@ -36,6 +36,7 @@ extern "C" {
 
     void __thiscall RKC_FONTMAKER_deconstructor(RKC_FONTMAKER* self)
     {
+        // TODO: Implement
         CallFunctionInDLL<VOID>("o_RKC_FONTMAKER.dll",
             "??1RKC_FONTMAKER@@QAE@XZ",
             self);
@@ -44,6 +45,7 @@ extern "C" {
 
     bool __thiscall CreateDIB(RKC_FONTMAKER* self, HDC* hdc)
     {
+        // TODO: Implement
         bool result = CallFunctionInDLL<bool>(
             "o_RKC_FONTMAKER.dll",
             "?CreateDIB@RKC_FONTMAKER@@QAEHPAUHDC__@@@Z",
@@ -53,6 +55,7 @@ extern "C" {
 
     bool __thiscall DrawDoubleFont(RKC_FONTMAKER* self, HDC* hdc, unsigned char* ucharParam)
     {
+        // TODO: Implement
         bool result = CallFunctionInDLL<bool>(
             "o_RKC_FONTMAKER.dll",
             "?DrawDoubleFont@RKC_FONTMAKER@@QAEHPAUHDC__@@PAE@Z",
@@ -62,6 +65,7 @@ extern "C" {
 
     bool __thiscall DrawNormalFont(RKC_FONTMAKER* self, HDC* hdc, unsigned char* ucharParam)
     {
+        // TODO: Implement
         bool result = CallFunctionInDLL<bool>(
             "o_RKC_FONTMAKER.dll",
             "?DrawNormalFont@RKC_FONTMAKER@@QAEHPAUHDC__@@E@Z",
@@ -91,6 +95,7 @@ extern "C" {
 
     int32_t __thiscall Initialize(RKC_FONTMAKER* self, HDC* hdc, long param_2, long param_3, char* param_4)
     {
+        // TODO: Implement
         int32_t result = CallFunctionInDLL<int32_t>(
             "o_RKC_FONTMAKER.dll",
             "?Initialize@RKC_FONTMAKER@@QAEHPAUHDC__@@JJPAD@Z",
@@ -100,6 +105,7 @@ extern "C" {
 
     RKC_FONTMAKER* __thiscall EqualsOperator(RKC_FONTMAKER* self, const RKC_FONTMAKER& lhs)
     {
+        // TODO: Implement
         RKC_FONTMAKER* result = CallFunctionInDLL<RKC_FONTMAKER*>(
             "o_RKC_FONTMAKER.dll",
             "??4RKC_FONTMAKER@@QAEAAV0@ABV0@@Z",
@@ -159,6 +165,7 @@ extern "C" {
 
     int32_t __thiscall SaveNJPFile(RKC_FONTMAKER* self, HDC* hdc, char* param_2)
     {
+        // TODO: Implement
         int32_t result = CallFunctionInDLL<int32_t>(
             "o_RKC_FONTMAKER.dll",
             "?SaveNJPFile@RKC_FONTMAKER@@QAEHPAUHDC__@@PAD@Z",

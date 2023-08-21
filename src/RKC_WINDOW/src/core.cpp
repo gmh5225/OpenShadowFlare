@@ -65,6 +65,7 @@ extern "C" {
 
     void __thiscall HScroll(RKC_WINDOW* self, uint32_t param_1, uint64_t param_2)
     {
+        // TODO: Implement
         CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
             "?HScroll@RKC_WINDOW@@QAEXIJ",
@@ -73,6 +74,7 @@ extern "C" {
 
     void __thiscall VScroll(RKC_WINDOW* self, uint32_t param_1, uint64_t param_2)
     {
+        // TODO: Implement
         CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
             "?VScroll@RKC_WINDOW@@QAEXIJ@Z",
@@ -81,6 +83,7 @@ extern "C" {
 
     void __thiscall Resize(RKC_WINDOW* self)
     {
+        // TODO: Implement
         CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
             "?Resize@RKC_WINDOW@@QAEXX",
@@ -89,6 +92,7 @@ extern "C" {
 
     void __thiscall Show(RKC_WINDOW* self, int param_1)
     {
+        // TODO: Implement
         CallFunctionInDLL<void>(
             "o_RKC_WINDOW.dll",
             "?Show@RKC_WINDOW@@QAEXH@",
