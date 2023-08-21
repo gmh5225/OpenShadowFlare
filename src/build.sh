@@ -28,7 +28,7 @@ mkdir ../build
 # Loop through each directory and compile
 for dir in "${dirs[@]}"; do
     echo "Compiling $dir..."
-    g++ -Werror -static -m32 -mdll -std=c++17 -o "../build/$dir.dll" "$dir/src/core.cpp" "$dir/dll.def"
+    g++ -Werror -static -m32 -mdll -std=c++17 -o "../build/$dir.dll" "$dir/src/core.cpp" "$dir/dll.def" -lgdi32
     
     # Check the exit status of the g++ command
     if [ $? -eq 0 ]; then
