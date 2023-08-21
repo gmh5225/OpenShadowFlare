@@ -7,34 +7,35 @@ class RKC_FONTMAKER {
     // Based on the offsets and the sizeof(undefined4) which is 4 bytes.
     // We'll assume these are all 32-bit integers for now.
 public:
-    int32_t member1;   // Offset 0x08
-    int32_t member2;   // Offset 0x0C
-    int32_t member3;   // Offset 0x10
-    int32_t member4;   // Offset 0x14
-    // Skipping offset 0x18 as it's not initialized or used here
-    int32_t member5;   // Offset 0x1C
-    int32_t member6;   // Offset 0x20
-    int32_t member7;   // Offset 0x24
-
+    int32_t m_fontWidth;
+    int32_t m_fontHeight;
+    HFONT m_font;
+    BITMAPINFO* m_bitmapInfoNormal;
+    uint8_t* m_normalDIBitmap;
+    HBITMAP m_normalDDBitmap;
+    int32_t m_fontSizeNormal;
+    BITMAPINFO* m_bitmapInfoDouble;
+    uint8_t* m_doubleDIBitmap;
+    HBITMAP m_doubleDDBitmap;
+    int32_t m_fontSizeDouble;
 };
 
-// Pointers to the original functions
-// These can be deleted once the DLL is entirely rewritten
-// typedef VOID(WINAPI* deconstructorPtr)(RKC_FONTMAKER* self);
-// typedef BOOL(WINAPI* createDIBPtr)(RKC_FONTMAKER* self, HDC* hdc);
-// typedef BOOL(WINAPI* drawDoubleFontPtr)(RKC_FONTMAKER* self, HDC* hdc, unsigned char* param);
-// typedef BOOL(WINAPI* drawNormalFontPtr)(RKC_FONTMAKER* self, HDC* hdc, unsigned char* param);
+typedef VOID(WINAPI* deconstructorPtr)(RKC_FONTMAKER* wnd);
 
 extern "C" {
     void __thiscall RKC_FONTMAKER_constructor(RKC_FONTMAKER* self)
     {
-        self->member1 = 0;
-        self->member2 = 0;
-        self->member3 = 0;
-        self->member4 = 0;
-        self->member5 = 0;
-        self->member6 = 0;
-        self->member7 = 0;
+        self->m_fontWidth = 0;
+        self->m_fontHeight = 0;
+        self->m_font = nullptr;
+        self->m_bitmapInfoNormal = nullptr;
+        self->m_normalDIBitmap = nullptr;
+        self->m_normalDDBitmap = nullptr;
+        self->m_fontSizeNormal = 0;
+        self->m_bitmapInfoDouble = nullptr;
+        self->m_doubleDIBitmap = nullptr;
+        self->m_doubleDDBitmap = nullptr;
+        self->m_fontSizeDouble = 0;
     }
 
     void __thiscall RKC_FONTMAKER_deconstructor(RKC_FONTMAKER* self)
@@ -42,6 +43,7 @@ extern "C" {
         CallFunctionInDLL<VOID>("o_RKC_FONTMAKER.dll",
             "??1RKC_FONTMAKER@@QAE@XZ",
             self);
+        return;
     }
 
     bool __thiscall CreateDIB(RKC_FONTMAKER* self, HDC* hdc)
@@ -70,4 +72,102 @@ extern "C" {
             self, hdc, ucharParam);
         return result;
     }
+
+    HBITMAP __thiscall GetDoubleDDBitmap(RKC_FONTMAKER* self)
+    {
+        return self->m_doubleDDBitmap;
+    }
+
+    uint8_t* __thiscall GetDoubleDIBitmap(RKC_FONTMAKER* self)
+    {
+        return self->m_doubleDIBitmap;
+    }
+
+    HBITMAP __thiscall GetNormalDDBitmap(RKC_FONTMAKER* self)
+    {
+        return self->m_normalDDBitmap;
+    }
+
+    uint8_t* __thiscall GetNormalDIBitmap(RKC_FONTMAKER* self)
+    {
+        return self->m_normalDIBitmap;
+    }
+
+    int32_t __thiscall Initialize(RKC_FONTMAKER* self, HDC* hdc, long param_2, long param_3, char* param_4)
+    {
+        int result = CallFunctionInDLL<int>(
+            "o_RKC_FONTMAKER.dll",
+            "?Initialize@RKC_FONTMAKER@@QAEHPAUHDC__@@JJPAD@Z",
+            self, hdc, param_2, param_3, param_4);
+        return result;
+    }
+
+    RKC_FONTMAKER* __thiscall EqualsOperator(RKC_FONTMAKER* self, const RKC_FONTMAKER& lhs)
+    {
+        RKC_FONTMAKER* result = CallFunctionInDLL<RKC_FONTMAKER*>(
+            "o_RKC_FONTMAKER.dll",
+            "??4RKC_FONTMAKER@@QAEAAV0@ABV0@@Z",
+            self, lhs);
+        return result;
+    }
+
+    void __thiscall Release(RKC_FONTMAKER* self)
+    {
+        self->m_fontWidth = 0;
+        self->m_fontHeight = 0;
+        self->m_fontSizeNormal = 0;
+        self->m_fontSizeDouble = 0;
+
+        if (self->m_font != nullptr)
+        {
+            DeleteObject(self->m_font);
+            self->m_font = nullptr;
+        }
+
+        if (self->m_bitmapInfoNormal != nullptr)
+        {
+            delete[] self->m_bitmapInfoNormal;
+            self->m_bitmapInfoNormal = nullptr;
+        }
+
+        if (self->m_normalDIBitmap != nullptr)
+        {
+            delete[] self->m_normalDIBitmap;
+            self->m_normalDIBitmap = nullptr;
+        }
+
+        if (self->m_normalDDBitmap != nullptr)
+        {
+            DeleteObject(self->m_normalDDBitmap);
+            self->m_normalDDBitmap = nullptr;
+        }
+
+        if (self->m_bitmapInfoDouble != nullptr)
+        {
+            delete[] self->m_bitmapInfoDouble;
+            self->m_bitmapInfoDouble = nullptr;
+        }
+
+        if (self->m_doubleDIBitmap != nullptr)
+        {
+            delete[] self->m_doubleDIBitmap;
+            self->m_doubleDIBitmap = nullptr;
+        }
+
+        if (self->m_doubleDDBitmap != nullptr)
+        {
+            DeleteObject(self->m_doubleDDBitmap);
+            self->m_doubleDDBitmap = nullptr;
+        }
+    }
+
+    int32_t __thiscall SaveNJPFile(RKC_FONTMAKER* self, HDC* hdc, char* param_2)
+    {
+        int result = CallFunctionInDLL<int32_t>(
+            "o_RKC_FONTMAKER.dll",
+            "?SaveNJPFile@RKC_FONTMAKER@@QAEHPAUHDC__@@PAD@Z",
+            self, hdc, param_2);
+        return result;
+    }
+
 }
