@@ -20,8 +20,6 @@ public:
     int32_t m_fontSizeDouble;
 };
 
-typedef VOID(WINAPI* deconstructorPtr)(RKC_FONTMAKER* wnd);
-
 extern "C" {
     void __thiscall RKC_FONTMAKER_constructor(RKC_FONTMAKER* self)
     {
