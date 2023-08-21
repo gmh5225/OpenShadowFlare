@@ -6,6 +6,8 @@
 #include <cstdint>
 #include "utils.h"
 
+# define THISCALL __thiscall
+
 
 /**
  * CallFunctionInDLL - A template function that dynamically loads a DLL, retrieves
@@ -56,7 +58,7 @@ RetType CallFunctionInDLL(const char* dllName, const char* funcName, Args... arg
     }
 
     // Get the address of the function from the loaded DLL
-    typedef RetType(WINAPI* FuncType)(Args...);
+    typedef RetType(THISCALL* FuncType)(Args...);
     FuncType funcPtr = (FuncType)GetProcAddress(loadedDll, funcName);
 
     // Check if we successfully retrieved the address of the function
