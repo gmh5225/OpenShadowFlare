@@ -4,8 +4,6 @@
 #include "../../utils.h"
 
 class RKC_FONTMAKER {
-    // Based on the offsets and the sizeof(undefined4) which is 4 bytes.
-    // We'll assume these are all 32-bit integers for now.
 public:
     int32_t m_fontWidth;
     int32_t m_fontHeight;
