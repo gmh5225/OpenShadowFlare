@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <cstdint>
+#include "utils.h"
 
 class RKC_WINDOW {
 public:
@@ -24,10 +25,10 @@ public:
 
 // Pointers to the original functions
 // These can be deleted once the DLL is entirely rewritten
-typedef VOID(WINAPI* hScrollPtr)(RKC_WINDOW* wnd, uint32_t param1, uint32_t param2);
-typedef VOID(WINAPI* vScrollPtr)(RKC_WINDOW* wnd, uint32_t param1, uint32_t param2);
-typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* wnd);
-typedef VOID(WINAPI* showPtr)(RKC_WINDOW* wnd);
+typedef VOID(WINAPI* hScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
+typedef VOID(WINAPI* vScrollPtr)(RKC_WINDOW* self, uint32_t param1, uint32_t param2);
+typedef VOID(WINAPI* resizePtr)(RKC_WINDOW* self);
+typedef VOID(WINAPI* showPtr)(RKC_WINDOW* self, int32_t param_1);
 
 extern "C" {
     void __thiscall RKC_Window_constructor(RKC_WINDOW* self)
@@ -64,129 +65,44 @@ extern "C" {
 
     void __thiscall HScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
     {
-        // Load the original (renamed) DLL into memory
-        HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
-
-        // Check if the original DLL loaded successfully
-        if (!o_window_Dll) {
-            // Print an error message if failed to load, showing the error code
-            printf("Failed to load o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Get the address of the original HScroll function from o_RKC_WINDOW.dll
-        hScrollPtr o_hScroll_func = (hScrollPtr)GetProcAddress(o_window_Dll, "?HScroll@RKC_WINDOW@@QAEXIJ");
-
-        // Check if we successfully retrieved the address of the original function
-        if (!o_hScroll_func) {
-            // Print an error message if failed to retrieve, showing the error code
-            printf("Failed to find HScroll function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Call the original function using our function pointer
-        o_hScroll_func(self, param1, param2);
-
-        // Free the loaded original dll from memory. Important to release resources!
-        FreeLibrary(o_window_Dll);
-
-        return;
+        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+            "o_RKC_WINDOW.dll",
+            hScrollPtr,
+            "?HScroll@RKC_WINDOW@@QAEXIJ",
+            self, param1, param2
+        );
     }
 
     void __thiscall VScroll(RKC_WINDOW* self, uint32_t param1, uint64_t param2)
     {
-        // Load the original (renamed) DLL into memory
-        HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
-
-        // Check if the original DLL loaded successfully
-        if (!o_window_Dll) {
-            // Print an error message if failed to load, showing the error code
-            printf("Failed to load o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Get the address of the original function from the original dll
-        vScrollPtr o_vScroll_func = (vScrollPtr)GetProcAddress(o_window_Dll, "?VScroll@RKC_WINDOW@@QAEXIJ@Z");
-
-        // Check if we successfully retrieved the address of the original function
-        if (!o_vScroll_func) {
-            // Print an error message if failed to retrieve, showing the error code
-            printf("Failed to find VScroll function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Call the original function using our function pointer
-        o_vScroll_func(self, param1, param2);
-
-        // Free the loaded original dll from memory. Important to release resources!
-        FreeLibrary(o_window_Dll);
-
-        return;
+        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+            "o_RKC_WINDOW.dll",
+            vScrollPtr,
+            "?VScroll@RKC_WINDOW@@QAEXIJ@Z",
+            self, param1, param2
+        );
     }
 
     void __thiscall Resize(RKC_WINDOW* self)
     {
-        // Load the original (renamed) DLL into memory
-        HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
-
-        // Check if the original DLL loaded successfully
-        if (!o_window_Dll) {
-            // Print an error message if failed to load, showing the error code
-            printf("Failed to load o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Get the address of the original function from the original dll
-        resizePtr o_resize_func = (resizePtr)GetProcAddress(o_window_Dll, "?Resize@RKC_WINDOW@@QAEXX");
-
-        // Check if we successfully retrieved the address of the original function
-        if (!o_resize_func) {
-            // Print an error message if failed to retrieve, showing the error code
-            printf("Failed to find Resize function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Call the original function using our function pointer
-        o_resize_func(self);
-
-        // Free the loaded original dll from memory. Important to release resources!
-        FreeLibrary(o_window_Dll);
-
-        return;
+        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+            "o_RKC_WINDOW.dll",
+            resizePtr,
+            "?Resize@RKC_WINDOW@@QAEXX",
+            self
+        );
     }
 
     void __thiscall Show(RKC_WINDOW* self, int param_1)
     {
-        // Load the original (renamed) DLL into memory
-        HINSTANCE o_window_Dll = LoadLibrary(TEXT("o_RKC_WINDOW.dll"));
-
-        // Check if the original DLL loaded successfully
-        if (!o_window_Dll) {
-            // Print an error message if failed to load, showing the error code
-            printf("Failed to load o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Get the address of the original function from the original dll
-        showPtr o_show_func = (showPtr)GetProcAddress(o_window_Dll, "?Show@RKC_WINDOW@@QAEXH@");
-
-        // Check if we successfully retrieved the address of the original function
-        if (!o_show_func) {
-            // Print an error message if failed to retrieve, showing the error code
-            printf("Failed to find Show function in o_RKC_WINDOW.dll with error code: 0x%x\n", GetLastError());
-            return;
-        }
-
-        // Call the original function using our function pointer
-        o_show_func(self);
-
-        // Free the loaded original dll from memory. Important to release resources!
-        FreeLibrary(o_window_Dll);
-
-        return;
+        LOAD_AND_EXECUTE_ORIGINAL_FUNC(
+            "o_RKC_WINDOW.dll",
+            showPtr,
+            "?Show@RKC_WINDOW@@QAEXH@",
+            self, param_1
+        );
     }
 }
-
 
 
 bool __stdcall DllMain(LPVOID, std::uint32_t call_reason, LPVOID)
