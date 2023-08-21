@@ -91,7 +91,7 @@ extern "C" {
 
     int32_t __thiscall Initialize(RKC_FONTMAKER* self, HDC* hdc, long param_2, long param_3, char* param_4)
     {
-        int result = CallFunctionInDLL<int>(
+        int32_t result = CallFunctionInDLL<int32_t>(
             "o_RKC_FONTMAKER.dll",
             "?Initialize@RKC_FONTMAKER@@QAEHPAUHDC__@@JJPAD@Z",
             self, hdc, param_2, param_3, param_4);
@@ -159,7 +159,7 @@ extern "C" {
 
     int32_t __thiscall SaveNJPFile(RKC_FONTMAKER* self, HDC* hdc, char* param_2)
     {
-        int result = CallFunctionInDLL<int32_t>(
+        int32_t result = CallFunctionInDLL<int32_t>(
             "o_RKC_FONTMAKER.dll",
             "?SaveNJPFile@RKC_FONTMAKER@@QAEHPAUHDC__@@PAD@Z",
             self, hdc, param_2);
