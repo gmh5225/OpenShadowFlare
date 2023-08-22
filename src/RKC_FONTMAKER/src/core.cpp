@@ -3,7 +3,8 @@
 #include <cstdint>
 #include "../../utils.h"
 
-class RKC_FONTMAKER {
+class RKC_FONTMAKER
+{
 public:
     int32_t m_fontWidth;
     int32_t m_fontHeight;
@@ -18,7 +19,8 @@ public:
     int32_t m_fontSizeDouble;
 };
 
-extern "C" {
+extern "C"
+{
     void __thiscall RKC_FONTMAKER_constructor(RKC_FONTMAKER* self)
     {
         self->m_fontWidth = 0;
